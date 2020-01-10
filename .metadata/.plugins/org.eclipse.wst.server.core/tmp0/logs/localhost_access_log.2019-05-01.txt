@@ -1,0 +1,7 @@
+127.0.0.1 - - [01/May/2019:22:43:34 +0900] "GET / HTTP/1.1" 404 1036
+0:0:0:0:0:0:0:1 - - [01/May/2019:22:43:35 +0900] "GET /jspbook/addrbook/addrbook_form.jsp HTTP/1.1" 200 1484
+0:0:0:0:0:0:0:1 - - [01/May/2019:22:43:35 +0900] "GET /jspbook/addrbook/addrbook.css HTTP/1.1" 200 552
+0:0:0:0:0:0:0:1 - - [01/May/2019:22:43:37 +0900] "GET /jspbook/addrbook/addrbook_list.jsp HTTP/1.1" 200 1668
+0:0:0:0:0:0:0:1 - - [01/May/2019:22:43:39 +0900] "GET /jspbook/addrbook/addrbook_form.jsp HTTP/1.1" 200 1484
+0:0:0:0:0:0:0:1 - - [01/May/2019:22:44:17 +0900] "POST /jspbook/addrbook/addrbook_control.jsp HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [01/May/2019:22:44:17 +0900] "GET /jspbook/addrbook/addrbook_control.jsp?action=list HTTP/1.1" 200 2613

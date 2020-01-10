@@ -1,0 +1,40 @@
+@CHARSET "UTF-8";
+
+table {
+	width: auto;
+	border-collapse: collapse;
+	text-align: center;
+}
+ 
+td,th {
+	font-size: 10pt;
+	border: 2px solid #ffffff;
+	height: 30px;
+	padding: 5px;
+}
+
+th { /*테이블 head 스타일 정의*/
+	background-color: #3eca81;
+	color: #ffffff; 
+	font-family: Georgia;
+}
+
+tr td { /*테이블 head제외의 스타일 정의*/
+	color: #000000;
+	background-color: #cef2df;
+}
+
+input {
+	height: 25px;
+	width:200px;
+}
+
+select {
+	height: 25px;
+	width:200px;
+}
+input[type="submit"],[type="reset"],[type="button"] {
+	height: 25px;
+	width:130px;
+	margin: 0px 5px 0px 5px;
+}

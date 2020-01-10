@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration PUBLIC "-//APACHE//DTD LOG4J 1.2//EN" "http://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/xml/doc-files/log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+	<!-- log4j프레임 워크에서 제공하는 클래스임.  -->
+		<!-- layout은 로그를 출력하는 방식 -->
+		<!-- 패턴 레이아웃의 경우에는 출력 패턴을 지정해 줄 수 있다.
+		[해당되는 날짜를 HH:mm:ss] [class이름(특정한 jsp라던지, 현재 로깅되고 있는)] [로깅 수준] 로그에 대한 메세지, 줄바꿈 표시  -->
+	<appender name="stdout" 
+	class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern"
+				value="[%d{HH:mm:ss}] [%c{1}] [%p] %m %n" />
+		</layout>
+	</appender>
+
+<!-- param file은 value의 위치에 저장된다.  -->
+<!-- HTML 레이아웃으로 되어 있어서 파일 들어가면 HTML형태로 만들어 져 있음을 볼 수 있음.  -->
+   <appender name="dailyout" 
+   class="org.apache.log4j.DailyRollingFileAppender">  
+        <param name="file" value="c:/tmp/dailyout.log"/>  
+        <param name="Append" value="true"/>  
+        <param name="DatePattern" value="'.'yyMMdd"/>  
+        <!-- HTMLLayout안에 param있고 아무리 패턴있어도 적용이 안됨. 그래서 PatternLayout으로 한거 -->
+        <!-- layout class="org.apache.log4j.HTMLLayout"-->  
+         <layout class="org.apache.log4j.PatternLayout">  
+            <param name="ConversionPattern" 
+            	value="%t> [%d{yyyy-MM-dd HH:mm:ss}] [%c{1}] [%L] [%p] %m %n"/>  
+        </layout>  
+    </appender> 
+
+<!-- 10kb가 넘으면 다른 파일로 넘어가는 거. -->
+ 	<appender name="rolling" 
+ 	class="org.apache.log4j.RollingFileAppender">  
+        <param name="file" value="c:/tmp/rolling.log.html"/>  
+        <param name="Append" value="true"/>  
+        <param name="MaxFileSize" value="10kb"/>  
+       <param name="MaxBackupIndex" value="1"/> 
+        <layout class="org.apache.log4j.HTMLLayout" /> 
+    </appender>  
+ <!-- root와 다른 점은 name이 있음. 이건 jspbook.ch14폴더에 적용  -->
+ <!-- dailyout은 INFO이상을 출력하기 때문에 이 경우에서는 warn레벨의 기록된 메세지들 보다 더 많음. -->
+     <logger name="jspbook.ch14">
+        <level value="INFO" />
+        <appender-ref ref="dailyout" />
+    </logger>
+  <!-- 아래는 jsp에 적용 -->
+  <!-- WARN로깅수준이상으로는 rolling으로 처리 -->
+    <logger name="org.apache.jsp.ch14">
+        <level value="WARN" />
+        <appender-ref ref="rolling" />
+    </logger>
+        
+    <root>
+        <level value="INFO" />
+        <appender-ref ref="stdout" />
+        <appender-ref ref="dailyout" />
+    </root>
+</log4j:configuration>
